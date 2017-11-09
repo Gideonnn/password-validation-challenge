@@ -101,7 +101,9 @@ export class LoginComponent {
   }
 
   // Passwords can only contain lower case alphabetic characters.
-  validate5(value: string): boolean {
-    return true;
+  validate5(pass: string): boolean {
+    const passed = !/[^a-z]+/g.test(pass);
+    console.log(passed ? 'validate5: pass' : 'validate5: fail');
+    return passed;
   }
 }
