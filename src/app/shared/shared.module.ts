@@ -1,6 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 // Modules
 import { MaterialModule } from './modules/material.module';
@@ -9,6 +10,7 @@ import { MaterialModule } from './modules/material.module';
   imports: [
     BrowserAnimationsModule,
     CommonModule,
+    FormsModule,
     MaterialModule,
   ],
   declarations: [
@@ -16,6 +18,7 @@ import { MaterialModule } from './modules/material.module';
   ],
   exports: [
     CommonModule,
+    FormsModule,
     MaterialModule,
   ],
 })
