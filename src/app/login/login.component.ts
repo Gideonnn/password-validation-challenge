@@ -94,8 +94,10 @@ export class LoginComponent {
   }
 
   // Passwords cannot be longer than 32 characters.
-  validate4(value: string): boolean {
-    return true;
+  validate4(pass: string): boolean {
+    const passed = pass.length <= 32;
+    console.log(passed ? 'validate4: pass' : 'validate4: fail');
+    return passed;
   }
 
   // Passwords can only contain lower case alphabetic characters.
