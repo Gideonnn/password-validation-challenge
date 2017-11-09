@@ -82,7 +82,7 @@ export class LoginComponent {
   // and are therefore confusing.
   validate2(pass: string): boolean {
     const passed = !/i|O|l/g.test(pass);
-    console.log(passed ? 'validate1: pass' : 'validate1: fail');
+    console.log(passed ? 'validate2: pass' : 'validate2: fail');
     return passed;
   }
 
