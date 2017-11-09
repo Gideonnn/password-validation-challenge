@@ -87,8 +87,10 @@ export class LoginComponent {
   }
 
   // Passwords must contain at least two non-overlapping pairs of letters, like aa, bb, or cc.
-  validate3(value: string): boolean {
-    return true;
+  validate3(pass: string): boolean {
+    const passed = /((.)\2){2}/g.test(pass);
+    console.log(passed ? 'validate3: pass' : 'validate3: fail');
+    return passed;
   }
 
   // Passwords cannot be longer than 32 characters.
