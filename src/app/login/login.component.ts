@@ -59,8 +59,23 @@ export class LoginComponent {
 
   // Passwords must include one increasing straight of at least three letters, like abc , cde , fgh ,
   // and so on, up to xyz . They cannot skip letters; acd doesn't count.
-  validate1(value: string): boolean {
-    return true;
+  validate1(pass: string): boolean {
+
+    const alphabet = [
+      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+    ];
+
+    for (let i = 0; i < alphabet.length - 2; i++) {
+      const chars = `${alphabet[i]}${alphabet[i + 1]}${alphabet[i + 2]}`;
+      if (pass.indexOf(chars) !== -1) {
+        console.log('validate1: pass');
+        return true;
+      }
+    }
+
+    console.log('validate1: fail');
+    return false;
   }
 
   // Passwords may not contain the letters i, O, or l, as these letters can be mistaken for other characters
