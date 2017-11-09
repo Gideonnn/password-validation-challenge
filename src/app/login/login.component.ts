@@ -80,8 +80,10 @@ export class LoginComponent {
 
   // Passwords may not contain the letters i, O, or l, as these letters can be mistaken for other characters
   // and are therefore confusing.
-  validate2(value: string): boolean {
-    return true;
+  validate2(pass: string): boolean {
+    const passed = !/i|O|l/g.test(pass);
+    console.log(passed ? 'validate1: pass' : 'validate1: fail');
+    return passed;
   }
 
   // Passwords must contain at least two non-overlapping pairs of letters, like aa, bb, or cc.
