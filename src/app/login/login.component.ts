@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'gid-login',
   template: `
     <form>
       <mat-form-field>
-        <input #user matInput placeholder="User">
+        <input #user matInput placeholder="User" [value]="getUsername()">
       </mat-form-field>
 
       <mat-form-field>
@@ -15,6 +15,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       <button
         color="primary"
         mat-raised-button
+        *ngIf="!isLoggedIn()"
         (click)="login(user.value, pass.value)">
         Login
       </button>
@@ -22,8 +23,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
       <button
         color="primary"
         mat-raised-button
+        *ngIf="isLoggedIn()"
         (click)="logout()">
-        Login
+        Logout
       </button>
     </form>
   `,
@@ -39,12 +41,20 @@ export class LoginComponent {
       this.validate4(pass) &&
       this.validate5(pass)
     ) {
-      // Persist login
+      localStorage.setItem('user', user);
     }
   }
 
   logout(): void {
-    // Remove stored login
+    localStorage.removeItem('user');
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.getUsername();
+  }
+
+  getUsername(): string | null {
+    return localStorage.getItem('user') ;
   }
 
   // Passwords must include one increasing straight of at least three letters, like abc , cde , fgh ,
