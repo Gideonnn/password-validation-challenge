@@ -1,6 +1,12 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
+// Eager loaded module
+import { LoginModule } from '../login/login.module';
+
 @NgModule({
+  imports: [
+    LoginModule,
+  ],
   providers: [
 
   ],
